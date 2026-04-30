@@ -6,8 +6,11 @@ import com.imobiliaria_api.model.Cliente;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
-@Mapper(componentModel = "spring", uses = {EmpresaMapper.class})
+@Mapper(componentModel = "spring", 
+        uses = {EmpresaMapper.class},
+        nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface ClienteMapper {
 
     @Mapping(target = "id", ignore = true)

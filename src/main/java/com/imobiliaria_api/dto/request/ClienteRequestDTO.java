@@ -33,6 +33,31 @@ public class ClienteRequestDTO {
     @Schema(description = "Endereço completo", example = "Rua B, 456 - São Paulo - SP")
     private String endereco;
     
+    @Size(max = 10, message = "O número deve ter no máximo 10 caracteres")
+    @Schema(description = "Número do imóvel", example = "123")
+    private String numero;
+    
+    @Size(max = 100, message = "O complemento deve ter no máximo 100 caracteres")
+    @Schema(description = "Complemento do endereço", example = "Apto 45")
+    private String complemento;
+    
+    @Size(max = 100, message = "O bairro deve ter no máximo 100 caracteres")
+    @Schema(description = "Bairro", example = "Centro")
+    private String bairro;
+    
+    @Size(max = 20, message = "O CEP deve ter no máximo 20 caracteres")
+    @Pattern(regexp = "^\\d{5}-?\\d{3}$", message = "Formato de CEP inválido")
+    @Schema(description = "CEP", example = "12345-678")
+    private String cep;
+    
+    @Size(max = 100, message = "A cidade deve ter no máximo 100 caracteres")
+    @Schema(description = "Cidade", example = "São Paulo")
+    private String cidade;
+    
+    @Size(min = 2, max = 2, message = "O estado deve ter 2 caracteres")
+    @Schema(description = "Estado (UF)", example = "SP")
+    private String estado;
+    
     @NotBlank(message = "O tipo de cliente é obrigatório")
     @Pattern(regexp = "^(comprador|locatario|ambos)$", message = "O tipo deve ser: comprador, locatario ou ambos")
     @Schema(description = "Tipo do cliente", example = "ambos", allowableValues = {"comprador", "locatario", "ambos"})
