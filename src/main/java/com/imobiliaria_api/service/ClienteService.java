@@ -4,7 +4,7 @@ import com.imobiliaria_api.dto.request.ClienteRequestDTO;
 import com.imobiliaria_api.dto.response.ClienteResponseDTO;
 import com.imobiliaria_api.exception.BusinessException;
 import com.imobiliaria_api.exception.ResourceNotFoundException;
-import com.imobiliaria_api.mapper.ClienteMapper;
+import com.imobiliaria_api.mapper.ClienteMapperManual;
 import com.imobiliaria_api.model.Cliente;
 import com.imobiliaria_api.model.Empresa;
 import com.imobiliaria_api.repository.ClienteRepository;
@@ -22,10 +22,11 @@ public class ClienteService {
 
     private final ClienteRepository clienteRepository;
     private final EmpresaRepository empresaRepository;
-    private final ClienteMapper clienteMapper;
+    private final ClienteMapperManual clienteMapper;  
 
     @Transactional
     public ClienteResponseDTO create(Long empresaId, ClienteRequestDTO requestDTO) {
+        
         Empresa empresa = empresaRepository.findById(empresaId)
                 .orElseThrow(() -> new ResourceNotFoundException("Empresa não encontrada com ID: " + empresaId));
 
