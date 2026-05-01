@@ -7,8 +7,8 @@ import com.imobiliaria_api.dto.response.ParcelaVendaResponseDTO;
 import com.imobiliaria_api.dto.response.VendaResponseDTO;
 import com.imobiliaria_api.exception.BusinessException;
 import com.imobiliaria_api.exception.ResourceNotFoundException;
-import com.imobiliaria_api.mapper.ParcelaVendaMapper;
-import com.imobiliaria_api.mapper.VendaMapper;
+import com.imobiliaria_api.mapper.ParcelaVendaMapperManual;
+import com.imobiliaria_api.mapper.VendaMapperManual;
 import com.imobiliaria_api.model.*;
 import com.imobiliaria_api.repository.*;
 import lombok.RequiredArgsConstructor;
@@ -30,8 +30,8 @@ public class VendaService {
     private final ImovelRepository imovelRepository;
     private final ClienteRepository clienteRepository;
     private final ConfiguracaoFinanceiraRepository configuracaoFinanceiraRepository;
-    private final VendaMapper vendaMapper;
-    private final ParcelaVendaMapper parcelaVendaMapper;
+    private final VendaMapperManual vendaMapper;
+    private final ParcelaVendaMapperManual parcelaVendaMapper;
     private final CalculoJurosService calculoJurosService;
 
     @Transactional
