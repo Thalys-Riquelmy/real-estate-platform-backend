@@ -35,6 +35,24 @@ public class Proprietario {
     @Column(columnDefinition = "TEXT")
     private String endereco;
     
+    @Column(length = 10)
+    private String numero;
+    
+    @Column(length = 100)
+    private String complemento;
+    
+    @Column(length = 100)
+    private String bairro;
+    
+    @Column(length = 20)
+    private String cep;
+    
+    @Column(length = 100)
+    private String cidade;
+    
+    @Column(length = 2)
+    private String estado;
+    
     @Column(length = 50)
     private String banco;
     

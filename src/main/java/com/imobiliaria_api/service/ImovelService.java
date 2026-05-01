@@ -7,7 +7,7 @@ import com.imobiliaria_api.dto.request.ImovelRequestDTO;
 import com.imobiliaria_api.dto.response.ImovelResponseDTO;
 import com.imobiliaria_api.exception.BusinessException;
 import com.imobiliaria_api.exception.ResourceNotFoundException;
-import com.imobiliaria_api.mapper.ImovelMapper;
+import com.imobiliaria_api.mapper.ImovelMapperManual;
 import com.imobiliaria_api.model.Empresa;
 import com.imobiliaria_api.model.Imovel;
 import com.imobiliaria_api.model.Proprietario;
@@ -32,7 +32,7 @@ public class ImovelService {
     private final ImovelRepository imovelRepository;
     private final EmpresaRepository empresaRepository;
     private final ProprietarioRepository proprietarioRepository;
-    private final ImovelMapper imovelMapper;
+    private final ImovelMapperManual imovelMapper;
     private final ObjectMapper objectMapper;
 
     @Transactional

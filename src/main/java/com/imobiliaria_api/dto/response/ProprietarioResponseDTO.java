@@ -11,6 +11,12 @@ public class ProprietarioResponseDTO {
     private String telefone;
     private String email;
     private String endereco;
+    private String numero;
+    private String complemento;
+    private String bairro;
+    private String cep;
+    private String cidade;
+    private String estado;
     private String banco;
     private String agencia;
     private String conta;

@@ -4,7 +4,7 @@ import com.imobiliaria_api.dto.request.ProprietarioRequestDTO;
 import com.imobiliaria_api.dto.response.ProprietarioResponseDTO;
 import com.imobiliaria_api.exception.BusinessException;
 import com.imobiliaria_api.exception.ResourceNotFoundException;
-import com.imobiliaria_api.mapper.ProprietarioMapper;
+import com.imobiliaria_api.mapper.ProprietarioMapperManual;
 import com.imobiliaria_api.model.Empresa;
 import com.imobiliaria_api.model.Proprietario;
 import com.imobiliaria_api.repository.EmpresaRepository;
@@ -22,7 +22,7 @@ public class ProprietarioService {
 
     private final ProprietarioRepository proprietarioRepository;
     private final EmpresaRepository empresaRepository;
-    private final ProprietarioMapper proprietarioMapper;
+    private final ProprietarioMapperManual proprietarioMapper;
 
     @Transactional
     public ProprietarioResponseDTO create(Long empresaId, ProprietarioRequestDTO requestDTO) {

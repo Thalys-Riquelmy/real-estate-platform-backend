@@ -7,8 +7,8 @@ import com.imobiliaria_api.dto.response.CalculoJurosResponse;
 import com.imobiliaria_api.dto.response.PrestacaoAluguelResponseDTO;
 import com.imobiliaria_api.exception.BusinessException;
 import com.imobiliaria_api.exception.ResourceNotFoundException;
-import com.imobiliaria_api.mapper.AluguelMapper;
-import com.imobiliaria_api.mapper.PrestacaoAluguelMapper;
+import com.imobiliaria_api.mapper.AluguelMapperManual;
+import com.imobiliaria_api.mapper.PrestacaoAluguelMapperManual;
 import com.imobiliaria_api.model.*;
 import com.imobiliaria_api.repository.*;
 import lombok.RequiredArgsConstructor;
@@ -30,8 +30,8 @@ public class AluguelService {
     private final ImovelRepository imovelRepository;
     private final ClienteRepository clienteRepository;
     private final ConfiguracaoFinanceiraRepository configuracaoFinanceiraRepository;
-    private final AluguelMapper aluguelMapper;
-    private final PrestacaoAluguelMapper prestacaoMapper;
+    private final AluguelMapperManual aluguelMapper;
+    private final PrestacaoAluguelMapperManual prestacaoAluguelMapper;
     private final CalculoJurosService calculoJurosService;
 
     @Transactional
@@ -78,7 +78,7 @@ public class AluguelService {
         gerarPrestacoes(aluguel, aluguel.getValorAluguel(), dataBase, aluguel.getDiaVencimento(), quantidadeMeses);
         
         return prestacaoRepository.findByAluguelIdOrderByDataVencimentoAsc(id).stream()
-            .map(prestacaoMapper::toResponseDTO).collect(Collectors.toList());
+        		.map(prestacaoAluguelMapper::toResponseDTO).collect(Collectors.toList());
     }
 
     private void gerarPrestacoes(Aluguel aluguel, BigDecimal valorBase, LocalDate dataReferencia, int diaVencimento, int qtde) {
@@ -106,7 +106,7 @@ public class AluguelService {
     public List<PrestacaoAluguelResponseDTO> getPrestacoes(Long id, Long empresaId) {
         getAluguel(id, empresaId);
         return prestacaoRepository.findByAluguelIdOrderByDataVencimentoAsc(id).stream()
-                .map(prestacaoMapper::toResponseDTO)
+        		.map(prestacaoAluguelMapper::toResponseDTO)
                 .collect(Collectors.toList());
     }
 
@@ -137,7 +137,7 @@ public class AluguelService {
         prestacao.setValorPago(calc.getValorTotal());
 
         PrestacaoAluguel saved = prestacaoRepository.save(prestacao);
-        return prestacaoMapper.toResponseDTO(saved);
+        return prestacaoAluguelMapper.toResponseDTO(saved);
     }
     
     @Transactional
@@ -155,7 +155,7 @@ public class AluguelService {
     private AluguelResponseDTO makeResponse(Aluguel aluguel) {
         AluguelResponseDTO res = aluguelMapper.toResponseDTO(aluguel);
         List<PrestacaoAluguelResponseDTO> prestacoes = prestacaoRepository.findByAluguelIdOrderByDataVencimentoAsc(aluguel.getId())
-                .stream().map(prestacaoMapper::toResponseDTO).collect(Collectors.toList());
+        		.stream().map(prestacaoAluguelMapper::toResponseDTO).collect(Collectors.toList());
         res.setPrestacoes(prestacoes);
         return res;
     }
