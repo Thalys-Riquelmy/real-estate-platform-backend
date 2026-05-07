@@ -79,10 +79,7 @@ public class ImovelMapperManual {
         if (entity.getProprietario() != null) {
             dto.setProprietario(proprietarioMapper.toResponseDTO(entity.getProprietario()));
         }
-        if (entity.getFotos() != null) {
-            dto.setFotos(entity.getFotos());
-        }
-        
+               
         return dto;
     }
 

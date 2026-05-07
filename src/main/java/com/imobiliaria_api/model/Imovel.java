@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "imoveis")
@@ -62,8 +63,8 @@ public class Imovel {
     @Column(length = 20)
     private String status = "disponivel"; // disponivel, vendido, alugado, reservado, manutencao
     
-    @Column(columnDefinition = "jsonb")
-    private String fotos; // Array de URLs como JSON
+    @OneToMany(mappedBy = "imovel", cascade = CascadeType.ALL)
+    private List<ImagemImovel> imagens;
     
     private Boolean destaque = false;
     
