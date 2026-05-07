@@ -3,6 +3,7 @@ package com.imobiliaria_api.dto.response;
 import lombok.Data;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 public class ImovelResponseDTO {
@@ -24,7 +25,7 @@ public class ImovelResponseDTO {
     private BigDecimal valorVenda;
     private BigDecimal valorAluguel;
     private String status;
-    private String fotos; // RAW JSON string
+    private List<ImagemImovelResponseDTO> imagens;
     private Boolean destaque;
     private String observacoes;
     private LocalDateTime createdAt;

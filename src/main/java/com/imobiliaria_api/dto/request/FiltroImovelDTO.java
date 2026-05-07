@@ -16,5 +16,5 @@ public class FiltroImovelDTO {
     private BigDecimal valorVendaMax;
     private BigDecimal valorAluguelMin;
     private BigDecimal valorAluguelMax;
-    private String busca; // texto livre para endereço
+    private String busca; 
 }
