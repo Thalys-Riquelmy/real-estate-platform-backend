@@ -21,4 +21,6 @@ public class AluguelResponseDTO {
     private ImovelResponseDTO imovel;
     private ClienteResponseDTO cliente;
     private List<PrestacaoAluguelResponseDTO> prestacoes;
+    
+    private Boolean hasContratoPdf;
 }

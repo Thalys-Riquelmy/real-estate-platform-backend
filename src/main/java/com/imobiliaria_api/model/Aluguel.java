@@ -32,12 +32,15 @@ public class Aluguel {
     private Cliente cliente;
     
     private LocalDate dataInicio;
-    private LocalDate dataFim; // null = contrato aberto
+    private LocalDate dataFim;
     private BigDecimal valorAluguel;
     private Integer diaVencimento;
     
-    private String status = "ativo"; // ativo, encerrado, cancelado
+    private String status = "ativo";
     private String contratoUrl;
+    
+    @Column(columnDefinition = "BYTEA")
+    private byte[] contratoPdf;
     
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
